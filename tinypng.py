@@ -36,7 +36,6 @@ class Tinypng():
             os.makedirs(out_put_dir)
 
         for i, image in enumerate(images):
-            print(image)
             file_name = os.path.splitext(os.path.basename(image))[0]
             with open(image, 'rb') as inputfile:
                 # バイナリモードファイルをPILイメージで取得
@@ -62,8 +61,7 @@ COMPRESS_QUALITY = st.slider('画像のクオリティーを選択〜', min_valu
 if text_ja:
     files = st.file_uploader('画像をアップロードしてください.', type=['jpg', 'jpeg', 'png'], accept_multiple_files = True)
     file_name_en = translater.translate_ja(text_ja)
-    st.write(files)
-    st.write(len(files))
+
     for file in files:
         img_path = os.path.join(IMG_PATH, file.name)
         with open(img_path, 'wb') as f:
